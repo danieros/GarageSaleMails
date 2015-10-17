@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="GarageSale" Class="GarageSaleDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=rossouw.database.windows.net;Initial Catalog=GarageSale;User ID=danieros;Connect Timeout=60" SettingsObjectName="GarageSaleMails.Properties.Settings" SettingsPropertyName="GarageSaleConnectionString" Provider="System.Data.SqlClient" />
+  <Function Name="dbo.sp_whatMailToSent" Method="sp_whatMailToSent">
+    <ElementType Name="sp_whatMailToSentResult">
+      <Column Name="ItemID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EmailNotificationID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EmailAddress" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="ItemName" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_getTemplate" Method="sp_getTemplate">
+    <Parameter Name="templateid" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_getTemplateResult">
+      <Column Name="MailTemplateID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TemplateText" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_EmailDetails" Method="sp_EmailDetails">
+    <Parameter Name="itemid" Type="System.Int32" DbType="Int" />
+    <ElementType Name="sp_EmailDetailsResult">
+      <Column Name="MessageID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ItemID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MessageText" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Seller" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DateInserted" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="MemberID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_UpdateEmailTrack" Method="sp_UpdateEmailTrack">
+    <Parameter Name="itemid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="emailaddress" Type="System.String" DbType="VarChar(200)" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>
